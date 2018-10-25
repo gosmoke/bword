@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BWordModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BWordEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Budgets" EntityType="BWordModel.Budget" />
+    <EntitySet Name="BudgetCategories" EntityType="BWordModel.BudgetCategory" />
+    <EntitySet Name="Categories" EntityType="BWordModel.Category" />
+    <EntitySet Name="Transactions" EntityType="BWordModel.Transaction" />
+    <EntitySet Name="TransactionTypes" EntityType="BWordModel.TransactionType" />
+    <AssociationSet Name="FK_BudgetCategories_Budget" Association="BWordModel.FK_BudgetCategories_Budget">
+      <End Role="Budget" EntitySet="Budgets" />
+      <End Role="BudgetCategory" EntitySet="BudgetCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BudgetCategories_Category" Association="BWordModel.FK_BudgetCategories_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="BudgetCategory" EntitySet="BudgetCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_BudgetCategories" Association="BWordModel.FK_Transactions_BudgetCategories">
+      <End Role="BudgetCategory" EntitySet="BudgetCategories" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_TransactionType" Association="BWordModel.FK_Transactions_TransactionType">
+      <End Role="TransactionType" EntitySet="TransactionTypes" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Budget">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BudgetCategories" Relationship="BWordModel.FK_BudgetCategories_Budget" FromRole="Budget" ToRole="BudgetCategory" />
+  </EntityType>
+  <EntityType Name="BudgetCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BudgetId" Type="Guid" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Budget" Relationship="BWordModel.FK_BudgetCategories_Budget" FromRole="BudgetCategory" ToRole="Budget" />
+    <NavigationProperty Name="Category" Relationship="BWordModel.FK_BudgetCategories_Category" FromRole="BudgetCategory" ToRole="Category" />
+    <NavigationProperty Name="Transactions" Relationship="BWordModel.FK_Transactions_BudgetCategories" FromRole="BudgetCategory" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="BudgetCategories" Relationship="BWordModel.FK_BudgetCategories_Category" FromRole="Category" ToRole="BudgetCategory" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BudgetCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+    <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BudgetCategory" Relationship="BWordModel.FK_Transactions_BudgetCategories" FromRole="Transaction" ToRole="BudgetCategory" />
+    <NavigationProperty Name="TransactionType" Relationship="BWordModel.FK_Transactions_TransactionType" FromRole="Transaction" ToRole="TransactionType" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Transactions" Relationship="BWordModel.FK_Transactions_TransactionType" FromRole="TransactionType" ToRole="Transaction" />
+  </EntityType>
+  <Association Name="FK_BudgetCategories_Budget">
+    <End Type="BWordModel.Budget" Role="Budget" Multiplicity="1" />
+    <End Type="BWordModel.BudgetCategory" Role="BudgetCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Budget">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BudgetCategory">
+        <PropertyRef Name="BudgetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BudgetCategories_Category">
+    <End Type="BWordModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="BWordModel.BudgetCategory" Role="BudgetCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BudgetCategory">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_BudgetCategories">
+    <End Type="BWordModel.BudgetCategory" Role="BudgetCategory" Multiplicity="1" />
+    <End Type="BWordModel.Transaction" Role="Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BudgetCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="BudgetCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_TransactionType">
+    <End Type="BWordModel.TransactionType" Role="TransactionType" Multiplicity="1" />
+    <End Type="BWordModel.Transaction" Role="Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="TransactionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

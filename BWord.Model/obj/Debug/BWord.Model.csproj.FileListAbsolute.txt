@@ -1,0 +1,5 @@
+C:\Projects\Budget\BWord\BWord.Model\bin\Debug\BWord.Model.dll
+C:\Projects\Budget\BWord\BWord.Model\bin\Debug\BWord.Model.pdb
+C:\Projects\Budget\BWord\BWord.Model\obj\Debug\BWord.Model.csprojResolveAssemblyReference.cache
+C:\Projects\Budget\BWord\BWord.Model\obj\Debug\BWord.Model.dll
+C:\Projects\Budget\BWord\BWord.Model\obj\Debug\BWord.Model.pdb

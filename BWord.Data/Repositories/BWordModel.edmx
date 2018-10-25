@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BWordModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Budget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BudgetCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BudgetId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BudgetCategoryId" Type="int" Nullable="false" />
+          <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Notes" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BudgetCategories_Budget">
+          <End Role="Budget" Type="Self.Budget" Multiplicity="1" />
+          <End Role="BudgetCategories" Type="Self.BudgetCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budget">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetCategories">
+              <PropertyRef Name="BudgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetCategories_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="BudgetCategories" Type="Self.BudgetCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetCategories">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_BudgetCategories">
+          <End Role="BudgetCategories" Type="Self.BudgetCategories" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="BudgetCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_TransactionType">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="TransactionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BWordModelStoreContainer">
+          <EntitySet Name="Budget" EntityType="Self.Budget" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetCategories" EntityType="Self.BudgetCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BudgetCategories_Budget" Association="Self.FK_BudgetCategories_Budget">
+            <End Role="Budget" EntitySet="Budget" />
+            <End Role="BudgetCategories" EntitySet="BudgetCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetCategories_Category" Association="Self.FK_BudgetCategories_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="BudgetCategories" EntitySet="BudgetCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_BudgetCategories" Association="Self.FK_Transactions_BudgetCategories">
+            <End Role="BudgetCategories" EntitySet="BudgetCategories" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_TransactionType" Association="Self.FK_Transactions_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BWordModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BWordEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Budgets" EntityType="BWordModel.Budget" />
+          <EntitySet Name="BudgetCategories" EntityType="BWordModel.BudgetCategory" />
+          <EntitySet Name="Categories" EntityType="BWordModel.Category" />
+          <EntitySet Name="Transactions" EntityType="BWordModel.Transaction" />
+          <EntitySet Name="TransactionTypes" EntityType="BWordModel.TransactionType" />
+          <AssociationSet Name="FK_BudgetCategories_Budget" Association="BWordModel.FK_BudgetCategories_Budget">
+            <End Role="Budget" EntitySet="Budgets" />
+            <End Role="BudgetCategory" EntitySet="BudgetCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetCategories_Category" Association="BWordModel.FK_BudgetCategories_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="BudgetCategory" EntitySet="BudgetCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_BudgetCategories" Association="BWordModel.FK_Transactions_BudgetCategories">
+            <End Role="BudgetCategory" EntitySet="BudgetCategories" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transactions_TransactionType" Association="BWordModel.FK_Transactions_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionTypes" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Budget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BudgetCategories" Relationship="BWordModel.FK_BudgetCategories_Budget" FromRole="Budget" ToRole="BudgetCategory" />
+        </EntityType>
+        <EntityType Name="BudgetCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BudgetId" Type="Guid" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Budget" Relationship="BWordModel.FK_BudgetCategories_Budget" FromRole="BudgetCategory" ToRole="Budget" />
+          <NavigationProperty Name="Category" Relationship="BWordModel.FK_BudgetCategories_Category" FromRole="BudgetCategory" ToRole="Category" />
+          <NavigationProperty Name="Transactions" Relationship="BWordModel.FK_Transactions_BudgetCategories" FromRole="BudgetCategory" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BudgetCategories" Relationship="BWordModel.FK_BudgetCategories_Category" FromRole="Category" ToRole="BudgetCategory" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BudgetCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BudgetCategory" Relationship="BWordModel.FK_Transactions_BudgetCategories" FromRole="Transaction" ToRole="BudgetCategory" />
+          <NavigationProperty Name="TransactionType" Relationship="BWordModel.FK_Transactions_TransactionType" FromRole="Transaction" ToRole="TransactionType" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transactions" Relationship="BWordModel.FK_Transactions_TransactionType" FromRole="TransactionType" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_BudgetCategories_Budget">
+          <End Type="BWordModel.Budget" Role="Budget" Multiplicity="1" />
+          <End Type="BWordModel.BudgetCategory" Role="BudgetCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budget">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetCategory">
+              <PropertyRef Name="BudgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetCategories_Category">
+          <End Type="BWordModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="BWordModel.BudgetCategory" Role="BudgetCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BudgetCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_BudgetCategories">
+          <End Type="BWordModel.BudgetCategory" Role="BudgetCategory" Multiplicity="1" />
+          <End Type="BWordModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="BudgetCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transactions_TransactionType">
+          <End Type="BWordModel.TransactionType" Role="TransactionType" Multiplicity="1" />
+          <End Type="BWordModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="TransactionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BWordModelStoreContainer" CdmEntityContainer="BWordEntities" >
+          <EntitySetMapping Name="Budgets">
+            <EntityTypeMapping TypeName="BWordModel.Budget">
+              <MappingFragment StoreEntitySet="Budget">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BudgetCategories">
+            <EntityTypeMapping TypeName="BWordModel.BudgetCategory">
+              <MappingFragment StoreEntitySet="BudgetCategories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="BudgetId" ColumnName="BudgetId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BWordModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="BWordModel.Transaction">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="BudgetCategoryId" ColumnName="BudgetCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTypes">
+            <EntityTypeMapping TypeName="BWordModel.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

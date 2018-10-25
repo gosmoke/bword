@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="035a060acd84401582d21aff4a17b499" Name="Diagram1" >
+        <EntityTypeShape EntityType="BWordModel.Budget" Width="1.5" PointX="0.875" PointY="0.875" />
+        <EntityTypeShape EntityType="BWordModel.BudgetCategory" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="BWordModel.Category" Width="1.5" PointX="0.875" PointY="3.75" />
+        <EntityTypeShape EntityType="BWordModel.Transaction" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="BWordModel.TransactionType" Width="1.5" PointX="5.25" PointY="4.125" />
+        <AssociationConnector Association="BWordModel.FK_BudgetCategories_Budget" />
+        <AssociationConnector Association="BWordModel.FK_BudgetCategories_Category" />
+        <AssociationConnector Association="BWordModel.FK_Transactions_BudgetCategories" />
+        <AssociationConnector Association="BWordModel.FK_Transactions_TransactionType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

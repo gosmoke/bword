@@ -1,0 +1,12 @@
+C:\Projects\Budget\BWord\BWord.Test\obj\Debug\BWord.Test.csprojResolveAssemblyReference.cache
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\BWord.Test.dll
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\BWord.Test.pdb
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Projects\Budget\BWord\BWord.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Projects\Budget\BWord\BWord.Test\obj\Debug\BWord.Test.dll
+C:\Projects\Budget\BWord\BWord.Test\obj\Debug\BWord.Test.pdb

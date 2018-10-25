@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BWord", "BWord\", "{66C06CDF-1305-4740-BC02-3E7CCD0556BA}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51339"
+		Debug.AspNetCompiler.PhysicalPath = "BWord\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51339\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51339"
+		Release.AspNetCompiler.PhysicalPath = "BWord\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51339\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51339"
+		SlnRelativePath = "BWord\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BWord.Core", "BWord.Core\BWord.Core.csproj", "{BE08A1F2-4F3B-4464-81A9-40FD48B0093D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BWord.Data", "BWord.Data\BWord.Data.csproj", "{64B20C9A-59F0-44AE-951D-C7FB4151493D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BWord.Model", "BWord.Model\BWord.Model.csproj", "{969A1DE0-B27E-41C5-83B4-EA24C619462E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BWord.Test", "BWord.Test\BWord.Test.csproj", "{FD364021-D81B-44F0-A416-4F7ACA531F94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BWord.API", "BWord.API\BWord.API.csproj", "{F7B8F4BC-143F-41DC-B52A-D6D4BC95D0B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66C06CDF-1305-4740-BC02-3E7CCD0556BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C06CDF-1305-4740-BC02-3E7CCD0556BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C06CDF-1305-4740-BC02-3E7CCD0556BA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C06CDF-1305-4740-BC02-3E7CCD0556BA}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{BE08A1F2-4F3B-4464-81A9-40FD48B0093D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE08A1F2-4F3B-4464-81A9-40FD48B0093D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE08A1F2-4F3B-4464-81A9-40FD48B0093D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE08A1F2-4F3B-4464-81A9-40FD48B0093D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B20C9A-59F0-44AE-951D-C7FB4151493D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B20C9A-59F0-44AE-951D-C7FB4151493D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B20C9A-59F0-44AE-951D-C7FB4151493D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B20C9A-59F0-44AE-951D-C7FB4151493D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{969A1DE0-B27E-41C5-83B4-EA24C619462E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969A1DE0-B27E-41C5-83B4-EA24C619462E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969A1DE0-B27E-41C5-83B4-EA24C619462E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969A1DE0-B27E-41C5-83B4-EA24C619462E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD364021-D81B-44F0-A416-4F7ACA531F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD364021-D81B-44F0-A416-4F7ACA531F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD364021-D81B-44F0-A416-4F7ACA531F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD364021-D81B-44F0-A416-4F7ACA531F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B8F4BC-143F-41DC-B52A-D6D4BC95D0B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B8F4BC-143F-41DC-B52A-D6D4BC95D0B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B8F4BC-143F-41DC-B52A-D6D4BC95D0B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B8F4BC-143F-41DC-B52A-D6D4BC95D0B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

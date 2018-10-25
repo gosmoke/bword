@@ -1,0 +1,10 @@
+C:\Projects\Budget\BWord\BWord.Data\bin\Debug\BWord.Data.dll.config
+C:\Projects\Budget\BWord\BWord.Data\bin\Debug\BWord.Data.dll
+C:\Projects\Budget\BWord\BWord.Data\bin\Debug\BWord.Data.pdb
+C:\Projects\Budget\BWord\BWord.Data\bin\Debug\EntityFramework.dll
+C:\Projects\Budget\BWord\BWord.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\Budget\BWord\BWord.Data\bin\Debug\EntityFramework.xml
+C:\Projects\Budget\BWord\BWord.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\Budget\BWord\BWord.Data\obj\Debug\BWord.Data.csprojResolveAssemblyReference.cache
+C:\Projects\Budget\BWord\BWord.Data\obj\Debug\BWord.Data.dll
+C:\Projects\Budget\BWord\BWord.Data\obj\Debug\BWord.Data.pdb
